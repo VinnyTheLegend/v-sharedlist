@@ -1,0 +1,68 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 98vh;
+    width: 98vw
+}
+
+.hidden {
+    display: none !important;
+}
+
+#container {
+    border: rgb(3, 109, 3) solid 5px;
+    background-color: rgb(46, 46, 46);
+    color: rgb(202, 202, 202);
+    border-radius: 5px;
+    height: auto;
+    width: 70vw;
+    position: relative;
+}
+
+.datatable-pagination .datatable-active a,
+.datatable-pagination .datatable-active a:focus,
+.datatable-pagination .datatable-active a:hover,
+.datatable-pagination .datatable-active button,
+.datatable-pagination .datatable-active button:focus,
+.datatable-pagination .datatable-active button:hover {
+	background-color: rgb(3, 109, 3) !important;
+	cursor: default;
+}
+
+.datatable-pagination a:hover,
+.datatable-pagination button:hover {
+	background-color: rgb(3, 109, 3) !important;
+}
+
+#vehiclestable th {
+    color: rgb(3, 109, 3);
+}
+
+.datatable-sorter::after {
+    border-bottom: 4px solid rgb(3, 109, 3) !important;
+    border-top: 4px solid transparent;
+    top: 0px;
+}
+
+.datatable-sorter::before {
+    border-top: 4px solid rgb(3, 109, 3) !important; 
+    bottom: 0px;
+}
+
+#fixed-buttons {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+#fixed-title {
+    color: rgb(3, 109, 3);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 20px;
+    font-weight: bold;
+    font-size: 1.7em;
+    font-family: Roboto, Arial, Helvetica, sans-serif;
+}
