@@ -16,9 +16,14 @@ const options = {
 }
 const dataTable = new simpleDatatables.DataTable("#vehiclestable", options)
 
+const sleep = (milliseconds) => {
+    return new Promise(resolve => setTimeout(resolve, milliseconds))
+  }
+
 const destroyTable = () => {
+    dataTable.data.data = []
+    dataTable.data.headings = []
     dataTable.refresh()
-    dataTable.destroy()
 }
 
 const closeNUI = () => {
@@ -31,7 +36,7 @@ const closeNUI = () => {
     });
 }
 
-const renderVehiclesTable = () => {
+const renderVehiclesTable = async () => {
     dataTable.init()
     let table_data = []
     headings = ["Spawn Name", "Make & Model", "Category", "Shop", "Price"]
@@ -45,10 +50,11 @@ const renderVehiclesTable = () => {
         ]
         table_data.push(new_row)
     });
+    console.log(table_data)
     dataTable.insert({headings: headings, data: table_data})
 }
 
-const renderItemsTable = () => {
+const renderItemsTable = async () => {
     dataTable.init()
     let table_data = []
     headings = ["Name", "Description", "Weight"]
@@ -63,7 +69,7 @@ const renderItemsTable = () => {
     dataTable.insert({headings: headings, data: table_data})
 }
 
-const renderWeaponsTable = () => {
+const renderWeaponsTable = async () => {
     dataTable.init()
     let table_data = []
     headings = ["Spawn ID", "Label", "Ammo Type"]
@@ -78,7 +84,7 @@ const renderWeaponsTable = () => {
     dataTable.insert({headings: headings, data: table_data})
 }
 
-const renderJobsTable = () => {
+const renderJobsTable = async () => {
     dataTable.init()
     let table_data = []
     headings = ["Job", "Label", "Grade 0", "Grade 1", "Grade 2", "Grade 3", "Grade 4"]
@@ -105,7 +111,7 @@ const renderJobsTable = () => {
     dataTable.insert({headings: headings, data: table_data})
 }
 
-const renderGangsTable = () => {
+const renderGangsTable = async () => {
     dataTable.init()
     let table_data = []
     headings = ["Gang", "Label", "Grade 0", "Grade 1", "Grade 2", "Grade 3", "Grade 4"]
@@ -170,6 +176,7 @@ window.addEventListener('message', (event) => {
     let data = event.data
     if (data.type === 'v-sharedlist') {
         shared = data
+        console.log(shared)
         container.classList.remove("hidden")
         renderVehiclesTable()
         window_open = true
